@@ -118,8 +118,26 @@ void printPath(pair<int,int> exitcell,
 // Add arguments, return type, and logic
 // ----------------------------------------------------------
 
-bool dfs(int r, int c, const vector<vector<int>>& maze)
+bool dfs(int r, int c, const vector<vector<int>>& maze, vector<vector<bool>>& visited,
+    vector<vector<int>>& parent_r, vector<vector<int>>& parent_c, int exit_r, int exit_c)
 {
+
+    if (maze[r][c] == 1)
+    {
+        return false;
+    }
+
+    visited[r][c] = true;
+
+    if (visited[r][c])
+    {
+        return false;
+    }
+
+    if (r == exit_r && c == exit_c)
+    {
+        return true;
+    }
 
 }
 
@@ -169,7 +187,7 @@ int main() {
     // If found, print the path
     // ------------------------------------------------------
 
-    if (false) {
+    if (found) {
          printPath(exitcell, parent_r, parent_c, ent_r, ent_c);
      } else {
          cout << "\nNo path exists.\n";
