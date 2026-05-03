@@ -10,6 +10,8 @@
 using namespace std;
 
 // Directions for DFS (students must use these)
+// up 0 down 0
+// 0 right 0 left
 int dr[4] = {-1, 0, 1, 0};
 int dc[4] = {0, 1, 0, -1};
 
@@ -137,6 +139,20 @@ bool dfs(int r, int c, const vector<vector<int>>& maze, vector<vector<bool>>& vi
     if (r == exit_r && c == exit_c)
     {
         return true;
+    }
+
+    for (int i = 0; i < 4; i++)
+    {
+
+        int next_r = dr[i];
+        int next_c = dc[i];
+
+        if (dfs(next_r, next_c, maze, visited, parent_r, parent_c, exit_r, exit_c))
+        {
+            return true;
+        }
+
+
     }
 
 }
