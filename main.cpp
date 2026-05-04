@@ -124,6 +124,11 @@ bool dfs(int r, int c, const vector<vector<int>>& maze, vector<vector<bool>>& vi
     vector<vector<int>>& parent_r, vector<vector<int>>& parent_c, int exit_r, int exit_c)
 {
 
+    if (r < 0 || c > 0)
+    {
+        return false;
+    }
+
     if (maze[r][c] == 1)
     {
         return false;
