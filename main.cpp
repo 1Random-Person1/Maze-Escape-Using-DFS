@@ -124,12 +124,17 @@ bool dfs(int r, int c, const vector<vector<int>>& maze, vector<vector<bool>>& vi
     vector<vector<int>>& parent_r, vector<vector<int>>& parent_c, int exit_r, int exit_c)
 {
 
-    if (r < 0 || c > 0)
+    if (r < 0 || c < 0)
     {
         return false;
     }
 
     if (maze[r][c] == 1)
+    {
+        return false;
+    }
+
+    if (visited[r][c])
     {
         return false;
     }
@@ -149,9 +154,10 @@ bool dfs(int r, int c, const vector<vector<int>>& maze, vector<vector<bool>>& vi
 
         if (dfs(next_r, next_c, maze, visited, parent_r, parent_c, exit_r, exit_c))
         {
+            parent_r[r][c] = next_r;
+            parent_c[r][c] = next_c;
             return true;
         }
-
 
     }
 
